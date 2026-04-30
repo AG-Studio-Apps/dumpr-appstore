@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["VNKP6Y3BJP.com.betchley.xura"],
+        "components": [
+          {
+            "/": "/dump",
+            "comment": "Inbound brain-dump shares — opens Dumpr's review sheet pre-loaded with the sender's segments."
+          },
+          {
+            "/": "/dump/*",
+            "comment": "Same as above, with optional trailing path components."
+          }
+        ]
+      }
+    ]
+  }
+}

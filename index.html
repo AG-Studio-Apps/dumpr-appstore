@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dumpr</title>
+    <meta name="description" content="Speak. We sort the rest.">
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg-start: #0d0d26;
+            --bg-end: #2e1a52;
+            --accent: #33bfff;
+            --text: #fff;
+            --muted: rgba(255, 255, 255, 0.65);
+            --pill-bg: rgba(255, 255, 255, 0.08);
+            --pill-border: rgba(255, 255, 255, 0.18);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            color: var(--text);
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 20px;
+            text-align: center;
+        }
+        .card {
+            max-width: 420px;
+            width: 100%;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            border-radius: 28px;
+            padding: 40px 28px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        h1 {
+            font-size: 44px;
+            font-weight: 700;
+            margin: 0 0 8px;
+            letter-spacing: -0.02em;
+        }
+        .tagline {
+            font-size: 18px;
+            color: var(--muted);
+            margin: 0 0 32px;
+        }
+        .cta {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #0d0d26;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 16px;
+            transition: opacity 0.2s ease;
+        }
+        .cta:hover { opacity: 0.85; }
+        .cta-secondary {
+            display: inline-block;
+            margin-top: 16px;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .cta-secondary:hover { color: var(--text); }
+        .footer {
+            margin-top: 32px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>Dumpr</h1>
+        <p class="tagline">Dump it. We sort the rest.</p>
+        <!-- TODO post App Store launch: replace href with the App Store listing URL,
+             e.g. https://apps.apple.com/gb/app/dumpr/id<APP_ID> -->
+        <a class="cta" href="#">Get Dumpr on the App Store</a>
+        <p class="footer">Coming soon to iPhone.</p>
+    </main>
+</body>
+</html>
