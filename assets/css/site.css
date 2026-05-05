@@ -1,0 +1,398 @@
+/* ============================================================
+   Dumpr site — shared styles
+   Dark mode only. System font. On-brand palette.
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+  --bg-start:      #0d0d26;
+  --bg-end:        #2e1a52;
+  --accent:        #33bfff;
+  --accent-dark:   #0d0d26;
+  --text:          #ffffff;
+  --muted:         rgba(255, 255, 255, 0.65);
+  --muted-faint:   rgba(255, 255, 255, 0.35);
+  --card-bg:       rgba(255, 255, 255, 0.08);
+  --card-border:   rgba(255, 255, 255, 0.18);
+  --card-radius:   28px;
+  --blur:          20px;
+}
+
+/* ---- Reset / base ---- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  background-attachment: fixed;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+/* ---- Navigation ---- */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(13, 13, 38, 0.72);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border-bottom: 1px solid var(--card-border);
+}
+
+.site-nav .nav-brand {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.site-nav .nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav .nav-links a {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.site-nav .nav-links a:hover,
+.site-nav .nav-links a.active {
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* Mobile nav */
+@media (max-width: 600px) {
+  .site-nav {
+    padding: 14px 20px;
+  }
+  .site-nav .nav-links {
+    gap: 16px;
+  }
+  .site-nav .nav-links a {
+    font-size: 13px;
+  }
+}
+
+/* ---- Shared card / glass ---- */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+}
+
+/* ---- CTA button ---- */
+.cta {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-dark);
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.cta:hover {
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  padding: 32px 20px 48px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted-faint);
+  border-top: 1px solid var(--card-border);
+  margin-top: 64px;
+}
+.site-footer a {
+  color: var(--muted);
+}
+.site-footer a:hover {
+  color: var(--text);
+}
+
+/* ============================================================
+   HOME PAGE
+   ============================================================ */
+.home-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 62px);
+  padding: 40px 20px 64px;
+}
+
+.hero-card {
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  padding: 52px 36px 44px;
+}
+
+.hero-icon {
+  font-size: 72px;
+  line-height: 1;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.hero-card h1 {
+  font-size: 52px;
+  font-weight: 800;
+  margin: 0 0 10px;
+  letter-spacing: -0.03em;
+}
+
+.hero-tagline {
+  font-size: 20px;
+  color: var(--muted);
+  margin: 0 0 36px;
+  line-height: 1.4;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.cta-secondary {
+  color: var(--muted);
+  font-size: 14px;
+}
+.cta-secondary:hover {
+  color: var(--text);
+}
+
+/* Feature list below hero */
+.features {
+  padding: 0 20px 80px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  padding: 28px 24px;
+}
+
+.feature-icon {
+  font-size: 28px;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.feature-card h3 {
+  font-size: 17px;
+  font-weight: 650;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.feature-card p {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.features-section-title {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 32px;
+}
+
+/* ============================================================
+   DOC PAGES (onboarding / manual / privacy / eula)
+   ============================================================ */
+.doc-layout {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.doc-layout h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.doc-layout .doc-lead {
+  font-size: 18px;
+  color: var(--muted);
+  margin: 0 0 48px;
+  line-height: 1.5;
+}
+
+.doc-layout h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 48px 0 12px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.doc-layout h3 {
+  font-size: 17px;
+  font-weight: 650;
+  margin: 32px 0 8px;
+  color: var(--text);
+}
+
+.doc-layout p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.doc-layout ul,
+.doc-layout ol {
+  margin: 0 0 18px;
+  padding-left: 24px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.doc-layout li {
+  margin-bottom: 6px;
+}
+
+.doc-layout strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.doc-layout a {
+  color: var(--accent);
+}
+
+/* Step callout boxes for onboarding */
+.step-box {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 22px 24px;
+  margin: 24px 0;
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+}
+
+.step-box .step-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 6px;
+  display: block;
+}
+
+.step-box h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+.step-box p {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Privacy / EULA notice pill */
+.notice-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(51, 191, 255, 0.12);
+  border: 1px solid rgba(51, 191, 255, 0.28);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+
+/* TOC sidebar */
+.doc-toc {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 20px 22px;
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+
+.doc-toc strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.doc-toc ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.doc-toc ul li {
+  margin-bottom: 4px;
+}
+
+.doc-toc ul li a {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.doc-toc ul li a:hover {
+  color: var(--text);
+}

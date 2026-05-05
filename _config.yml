@@ -1,0 +1,30 @@
+title: Dumpr
+description: >-
+  Speak freely. Dumpr turns your voice into tasks, events, and notes — all on-device, no account required.
+lang: en
+url: "https://dumpr.agnticstudio.com"
+baseurl: ""
+
+# Prevent Jekyll from trying to process files it shouldn't touch
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - "*.gemspec"
+  - vendor
+
+# Keep the AASA as a static passthrough — Jekyll must not transform it
+include:
+  - .well-known
+
+# GitHub Pages uses Kramdown + Rouge
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Sass/SCSS passthrough (we use plain CSS, but no harm including it)
+sass:
+  style: compressed
