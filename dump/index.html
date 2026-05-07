@@ -51,6 +51,12 @@
             margin: 0 0 24px;
             line-height: 1.45;
         }
+        .ctas {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
         .cta {
             display: inline-block;
             padding: 14px 28px;
@@ -69,9 +75,19 @@
             color: var(--muted);
         }
         .footer a { color: var(--muted); }
+
+        /* Platform-specific visibility — default state shows the desktop
+           view so the page renders correctly for Android's App Links
+           verifier (which crawls without executing JS). The inline
+           script below toggles data-platform once the visitor's UA is
+           known. */
+        [data-platform-only] { display: none; }
+        body[data-platform="ios"]      [data-platform-only="ios"]     { display: block; }
+        body[data-platform="android"]  [data-platform-only="android"] { display: block; }
+        body[data-platform="desktop"]  [data-platform-only="desktop"] { display: block; }
     </style>
 </head>
-<body>
+<body data-platform="desktop">
     <main class="card">
         <h1>You've been dumped on</h1>
         <p>
@@ -79,32 +95,70 @@
             that turns one ramble into clean items in your reminders and
             calendar. Install Dumpr to open it.
         </p>
-        <!-- TODO post App Store launch: replace href with the App Store listing URL,
-             e.g. https://apps.apple.com/gb/app/dumpr/id<APP_ID>.
-             The receiver's payload is in the URL's `p` query param — once
-             they install the app and tap the link again, the universal-link
-             handler decodes it into the review sheet automatically. -->
-        <a class="cta" href="#">Get Dumpr on the App Store</a>
+
+        <div class="ctas" data-platform-only="ios">
+            <!-- TODO post App Store launch: replace href with the App Store
+                 listing URL, e.g. https://apps.apple.com/gb/app/dumpr/id<APP_ID>.
+                 The receiver's payload is in the URL's `p` query param —
+                 once they install the app and tap the link again, the
+                 universal-link handler decodes it into the review sheet. -->
+            <a class="cta" href="#">Get Dumpr on the App Store</a>
+        </div>
+
+        <div class="ctas" data-platform-only="android">
+            <!-- Literal placeholder — the Play listing doesn't exist yet.
+                 Swap REPLACE_ME_PLAY_STORE_URL for the real Play URL
+                 once the app is published. -->
+            <a class="cta" href="REPLACE_ME_PLAY_STORE_URL">Get Dumpr on Google Play</a>
+        </div>
+
+        <div class="ctas" data-platform-only="desktop">
+            <a class="cta" href="#">Get Dumpr on the App Store</a>
+            <a class="cta" href="REPLACE_ME_PLAY_STORE_URL">Get Dumpr on Google Play</a>
+        </div>
+
         <p class="footer">
             Already have Dumpr? <a href="dumpr://dump">Open the app directly</a>.
         </p>
     </main>
     <script>
-        // If the user happens to have Dumpr installed but the universal-link
-        // didn't fire (rare iOS edge case after a fresh install before the
-        // AASA cache populates), give them a manual escape hatch via the
-        // custom scheme. The page transition is fine either way.
-        try {
-            const params = new URLSearchParams(window.location.search);
-            if (params.has('p')) {
-                const v = params.get('v') || '1';
-                const p = params.get('p');
-                const customSchemeFallback = document.querySelector('a[href="dumpr://dump"]');
-                if (customSchemeFallback) {
-                    customSchemeFallback.href = `dumpr://dump?v=${encodeURIComponent(v)}&p=${encodeURIComponent(p)}`;
+        // Platform detection runs after the desktop default has rendered,
+        // so Android's App Links verifier (no-JS crawler) still gets a
+        // valid HTML response. Once we know the platform we flip the
+        // body attribute and CSS reveals the matching CTA block.
+        (function () {
+            try {
+                var ua = navigator.userAgent || '';
+                var isAndroid = /Android/i.test(ua);
+                // iPad on iOS 13+ reports as MacIntel with touch points; the
+                // maxTouchPoints check catches that case without false-
+                // positiving real Macs.
+                var isIOS = /iPad|iPhone|iPod/i.test(ua) ||
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                if (isAndroid) {
+                    document.body.setAttribute('data-platform', 'android');
+                } else if (isIOS) {
+                    document.body.setAttribute('data-platform', 'ios');
                 }
-            }
-        } catch (_) {}
+
+                // Forward the share-dump payload to the custom-scheme
+                // fallback link so users with the app installed can open
+                // it manually if the universal-link / App Links handoff
+                // didn't fire (rare edge case after a fresh install
+                // before the AASA / assetlinks cache populates). The
+                // ?v=&p=&c= query is opaque to this page — we just
+                // pass it through untouched.
+                var params = new URLSearchParams(window.location.search);
+                if (params.has('p')) {
+                    var qs = new URLSearchParams();
+                    qs.set('v', params.get('v') || '1');
+                    qs.set('p', params.get('p'));
+                    if (params.has('c')) qs.set('c', params.get('c'));
+                    var fallback = document.querySelector('a[href="dumpr://dump"]');
+                    if (fallback) fallback.href = 'dumpr://dump?' + qs.toString();
+                }
+            } catch (_) {}
+        })();
     </script>
 </body>
 </html>
