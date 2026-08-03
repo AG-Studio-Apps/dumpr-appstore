@@ -69,6 +69,14 @@
             transition: opacity 0.2s ease;
         }
         .cta:hover { opacity: 0.85; }
+        /* Stands in for the Play CTA until the Play listing exists.
+           Deliberately not styled as a .cta — there's nothing to tap. */
+        .android-pending {
+            margin: 0;
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.45;
+        }
         .footer {
             margin-top: 24px;
             font-size: 13px;
@@ -96,25 +104,31 @@
             calendar. Install Dumpr to open it.
         </p>
 
+        <!-- The ID-based App Store URL resolves without the listing slug,
+             so it can go in before approval. It 404s until the app is
+             live, which is strictly better than the href="#" it replaces:
+             that did nothing at all, on the page that IS the acquisition
+             funnel for a shared dump.
+
+             The receiver's payload is in the URL's `p` query param — once
+             they install and tap the link again, the universal-link
+             handler decodes it into the review sheet. -->
         <div class="ctas" data-platform-only="ios">
-            <!-- TODO post App Store launch: replace href with the App Store
-                 listing URL, e.g. https://apps.apple.com/gb/app/dumpr/id<APP_ID>.
-                 The receiver's payload is in the URL's `p` query param —
-                 once they install the app and tap the link again, the
-                 universal-link handler decodes it into the review sheet. -->
-            <a class="cta" href="#">Get Dumpr on the App Store</a>
+            <a class="cta" href="https://apps.apple.com/gb/app/id6761579957">Get Dumpr on the App Store</a>
         </div>
 
+        <!-- No Play CTA anywhere until the Play listing exists. The old
+             href="REPLACE_ME_PLAY_STORE_URL" resolved to
+             /dump/REPLACE_ME_PLAY_STORE_URL — a 404 shown to every
+             desktop visitor. Restore these two blocks (Android + the
+             second desktop button) once the Play URL is real; see
+             xura/docs/ANDROID_DEEP_LINK_HANDOFF.md. -->
         <div class="ctas" data-platform-only="android">
-            <!-- Literal placeholder — the Play listing doesn't exist yet.
-                 Swap REPLACE_ME_PLAY_STORE_URL for the real Play URL
-                 once the app is published. -->
-            <a class="cta" href="REPLACE_ME_PLAY_STORE_URL">Get Dumpr on Google Play</a>
+            <p class="android-pending">Dumpr is on iPhone today — Android is on the way.</p>
         </div>
 
         <div class="ctas" data-platform-only="desktop">
-            <a class="cta" href="#">Get Dumpr on the App Store</a>
-            <a class="cta" href="REPLACE_ME_PLAY_STORE_URL">Get Dumpr on Google Play</a>
+            <a class="cta" href="https://apps.apple.com/gb/app/id6761579957">Get Dumpr on the App Store</a>
         </div>
 
         <p class="footer">

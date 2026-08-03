@@ -11,8 +11,10 @@ description: "Dumpr is a voice-first capture app for iPhone. Speak freely — Du
     <h1>Dumpr</h1>
     <p class="hero-tagline">Dump it.<br>We'll sort the rest.</p>
     <div class="hero-actions">
-      <!-- TODO: replace # with the App Store listing URL once live -->
-      <a class="cta" href="#">Get Dumpr on the App Store</a>
+      <!-- ID-based App Store URL — resolves without the listing slug, so
+           it works the moment the app is approved. 404s until then, which
+           beats the href="#" it replaces doing nothing at all. -->
+      <a class="cta" href="https://apps.apple.com/gb/app/id6761579957">Get Dumpr on the App Store</a>
       <a class="cta-secondary" href="{{ '/onboarding/' | relative_url }}">How it works &rarr;</a>
     </div>
   </div>
