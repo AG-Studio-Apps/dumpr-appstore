@@ -15,7 +15,9 @@ permalink: /manual/
     <li><a href="#capture">Making a capture</a></li>
     <li><a href="#review">Reviewing your dump</a></li>
     <li><a href="#categories">Changing categories</a></li>
+    <li><a href="#dates">Checking and fixing a date</a></li>
     <li><a href="#split">Splitting a row</a></li>
+    <li><a href="#feedback">Telling us when we get it wrong</a></li>
     <li><a href="#sending">Sending to destinations</a></li>
     <li><a href="#sharing">Sharing with another Dumpr user</a></li>
     <li><a href="#inbox">The inbox</a></li>
@@ -53,7 +55,8 @@ The review sheet appears immediately after processing. **Nothing leaves Dumpr un
 The header shows a count of how many items are checked out of the total — for example, "5 of 6 items". Each row shows:
 
 - A **tick circle** on the left — filled green when included, empty circle when excluded.
-- The **item text** — editable inline.
+- The **item text** — editable inline. On calendar rows this is the tidied event title, which is exactly what Calendar will receive.
+- A **date chip** — calendar rows only. Shows the date and time about to be written. Tap it to change them.
 - A **category pill** below the text — shows Task, Calendar, or Note.
 
 At the bottom of the sheet, the **Original transcript** section shows everything you said verbatim, plus a **Save to Notes** button.
@@ -74,6 +77,20 @@ Dumpr's classification is accurate but not infallible — a quick tap to correct
 
 ---
 
+## Checking and fixing a date {#dates}
+
+Any row set to **Calendar** shows a small date chip beneath its text — this is exactly what will be written to your calendar, so there are no surprises after you confirm.
+
+- **A date and time** ("Sat 8 Aug, 10:00") means a one-hour event at that time.
+- **A date only** ("Sat 8 Aug") means an all-day event.
+- **"Add a date" in orange** means Dumpr couldn't work out when you meant. Worth tapping — otherwise the event lands an hour from now.
+
+**Tap the chip** to open a date picker. Set the date and time, or flip the **All-day** toggle, then tap Done. Your choice always wins over Dumpr's; nothing that arrives afterwards will overwrite it.
+
+Relative phrases like "this Saturday", "next Wednesday" and "tomorrow" are resolved against today's date. Vaguer phrasing ("the second weekend of August", "sometime next month") is where the chip earns its keep — glance at it, and fix it there rather than in Calendar afterwards.
+
+---
+
 ## Splitting a row {#split}
 
 Sometimes two separate things end up as a single row — "Mum coming round at 8 and Tom coming round at 12" might arrive as one item. To split it:
@@ -83,6 +100,20 @@ Sometimes two separate things end up as a single row — "Mum coming round at 8 
 3. Dumpr re-runs segmentation on just that row and replaces it with the resulting sub-items.
 
 If the split doesn't produce separate items (the segmenter still reads it as one), a message lets you know. In that case, **edit the text by hand first** — adding a period at the obvious break point and tapping Split again usually does the trick.
+
+---
+
+## Telling us when we get it wrong {#feedback}
+
+Correct something on the review sheet — flip a category, edit a title, set a date by hand, deselect or delete an item — and a short prompt appears:
+
+> **Oops! Did we get it wrong?** Share and we'll fix it.
+
+It only shows up when you've actually changed something. Accept a dump as-is and you'll never see it.
+
+Tapping it opens your Mail app with a report already written: the transcript, what Dumpr proposed, and what you changed it to, plus your app and iOS version. **You can read and edit every word before sending**, and nothing goes anywhere until you press send. If you'd rather not send part of it, delete that part — the report is still useful. If you have no mail account set up, the iOS share sheet appears instead so you can send it another way.
+
+These reports are the main way Dumpr's sorting gets better, and the corrections are the useful part — they show us exactly where the model went wrong. Nothing is uploaded in the background, and dumps that someone else shared with you never offer the prompt.
 
 ---
 

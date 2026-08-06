@@ -46,7 +46,7 @@ description: "Dumpr is a voice-first capture app for iPhone. Speak freely — Du
     <div class="card feature-card">
       <span class="feature-icon" aria-hidden="true">🔒</span>
       <h3>Entirely on-device</h3>
-      <p>Speech recognition, classification, and routing all run on your iPhone. No audio, no transcripts, and no captures ever leave your phone. No account. No Dumpr server.</p>
+      <p>Speech recognition, classification, and routing all run on your iPhone. Audio is never written to disk. Nothing you say leaves your phone unless you choose to send it. No account. No Dumpr server.</p>
     </div>
 
     <div class="card feature-card">

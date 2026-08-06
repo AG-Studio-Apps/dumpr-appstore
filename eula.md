@@ -63,9 +63,13 @@ You may not:
 
 The App performs all voice capture, transcription, segmentation, classification, and routing entirely on your device. We do not operate a server that handles your data. As a consequence:
 
-- We have no access to your audio recordings, transcripts, or the items you capture.
+- We have no access to your audio recordings, transcripts, or the items you capture, except where you deliberately send us a report about a mistake (see below).
 - We cannot restore data lost due to device failure, deletion, or any other cause.
 - You are responsible for any data you choose to share with third parties (including via the sharing features described below).
+
+### Reporting a mistake
+
+If the App sorts something incorrectly and you correct it, the App may offer to share a report of that correction with us. The report includes the transcript of that capture, what the App proposed, what you changed it to, and basic device and version information. The App does not send it: it opens your own mail application with the report ready to review, edit, or discard, and it is sent only if you choose to send it. Reports are used solely to improve the App's accuracy and are not sold, licensed, or shared with third parties. Full detail is in the [Privacy Policy](/privacy/#feedback).
 
 ---
 
